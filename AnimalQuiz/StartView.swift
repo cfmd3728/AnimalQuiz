@@ -14,9 +14,14 @@ struct StartView: View {
     var body: some View {
         VStack {
             Text("動物クイズ!")
-            Button("スタート") {
+            Button {
                 isShowingQuizView = true
                 
+            } label: {
+                Image(.startButton)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
             }
             .fullScreenCover(isPresented:$isShowingQuizView) {
                 QuizView()
@@ -46,8 +51,14 @@ struct StartView: View {
 //    var body:some View{
 //        VStack{
 //            Text("動物クイズ！")
-//            Button("スタート"){
+//            Button{
 //                isShowingQuizView = true
+//                
+//            } label: {
+//                Image(.startButton)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(maxWidth: .infinity)
 //                
 //            }
 //            
