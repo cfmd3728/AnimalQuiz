@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3D5F95032F05BAE500AEC4BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F94FF2F05BAE500AEC4BD /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3D5F941C2EFFC79D00AEC4BD /* AnimalQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D5F94FF2F05BAE500AEC4BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		3D5F94132EFFC79D00AEC4BD = {
 			isa = PBXGroup;
 			children = (
+				3D5F94FF2F05BAE500AEC4BD /* Assets.xcassets */,
 				3D5F941E2EFFC79D00AEC4BD /* AnimalQuiz */,
 				3D5F941D2EFFC79D00AEC4BD /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5F95032F05BAE500AEC4BD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

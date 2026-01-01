@@ -13,7 +13,11 @@ struct StartView: View {
     
     var body: some View {
         VStack {
-            Text("動物クイズ!")
+            Text("どうぶつ\nクイズ!")
+                .font(.system(size: 70).bold())
+                .foregroundStyle(.yellow)
+                .stroke(color: .green, width: 5)
+            
             Button {
                 isShowingQuizView = true
                 
@@ -50,7 +54,12 @@ struct StartView: View {
 //    
 //    var body:some View{
 //        VStack{
-//            Text("動物クイズ！")
+//            Text("どうぶつ\nクイズ！")
+//            
+//                .font(.system(size: 70).bold())
+//                .foregroundStyle(.yellow)
+//                .stroke(color: .green, width: 5)
+//            
 //            Button{
 //                isShowingQuizView = true
 //                
