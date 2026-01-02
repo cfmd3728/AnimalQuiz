@@ -5,62 +5,22 @@
 //  Created by Tora77 on 2025/12/26.
 
 
-import SwiftUI
-
-struct StartView: View {
-    @State var isShowingQuizView = false
-    
-    
-    var body: some View {
-        VStack {
-            Text("どうぶつ\nクイズ!")
-                .font(.system(size: 70).bold())
-                .foregroundStyle(.yellow)
-                .stroke(color: .green, width: 5)
-            
-            Button {
-                isShowingQuizView = true
-                
-            } label: {
-                Image(.startButton)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-            }
-            .fullScreenCover(isPresented:$isShowingQuizView) {
-                QuizView()
-            }
-            
-        }
-        .padding()
-    }
-}
-
-
-#Preview {
-    StartView()
-}
-
-
-
-
-
 //import SwiftUI
 //
-//
-//
-//struct StartView:View{
+//struct StartView: View {
 //    @State var isShowingQuizView = false
 //    
-//    var body:some View{
-//        VStack{
-//            Text("どうぶつ\nクイズ！")
-//            
+//    
+//    var body: some View {
+//        VStack {
+//            Spacer()
+//            Text("どうぶつ\nクイズ!")
 //                .font(.system(size: 70).bold())
 //                .foregroundStyle(.yellow)
 //                .stroke(color: .green, width: 5)
+//            Spacer()
 //            
-//            Button{
+//            Button {
 //                isShowingQuizView = true
 //                
 //            } label: {
@@ -68,19 +28,67 @@ struct StartView: View {
 //                    .resizable()
 //                    .scaledToFit()
 //                    .frame(maxWidth: .infinity)
-//                
+//            }
+//            .fullScreenCover(isPresented:$isShowingQuizView) {
+//                QuizView()
 //            }
 //            
-//        .fullScreenCover(isPresented: $isShowingQuizView) {
-//            QuizView()
 //        }
-//    }
 //        .padding()
+//        .backgroundImage()
+//        
+//    }
 //}
 //
-//    
-//}
+//
 //#Preview {
 //    StartView()
 //}
+
+
+
+
+
+import SwiftUI
+
+
+
+struct StartView:View{
+    @State var isShowingQuizView = false
+    
+    var body:some View{
+       
+        VStack{
+            Spacer()
+            Text("どうぶつ\nクイズ！")
+            
+                .font(.system(size: 70).bold())
+                .foregroundStyle(.yellow)
+                .stroke(color: .green, width: 5)
+            Spacer()
+            
+            Button{
+                isShowingQuizView = true
+                
+            } label: {
+                Image(.startButton)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                
+            }
+            
+        .fullScreenCover(isPresented: $isShowingQuizView) {
+            QuizView()
+        }
+    }
+        .padding()
+        .backgroundImage()
+}
+
+    
+}
+#Preview {
+    StartView()
+}
 
