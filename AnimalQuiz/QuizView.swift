@@ -13,7 +13,21 @@ struct QuizView: View {
     var body: some View {
        VStack {
             Text("問題番号: 1/5")
+               .font(.headline)
+               .padding(10)
+               .background(Color.originalGreen)
+               .foregroundStyle(.white)
+               .clipShape(RoundedRectangle(cornerRadius: 10))
+
             Text("次のうち、世界で最も速く走る動物はどれですか？")
+               .font(.title)
+               .padding()
+               .frame(maxWidth: .infinity)
+               .background(Color.originalLightGreen)
+               .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.originalGreen, lineWidth: 5)
+               )
            
            Button("ライオン"){
                isShowingScoreView = true
@@ -32,7 +46,9 @@ struct QuizView: View {
                
            }
         }
+       .padding()
     }
+      
         
 }
 
@@ -50,7 +66,35 @@ struct QuizView: View {
 //    var body: some View {
 //        VStack{
 //            Text("問題番号: 1/5")
+//
+//                .font(.headline)
+//                .padding(10)
+//                .background(Color.originalGreen)
+//                .foregroundStyle(.white)
+//                .clipShape(RoundedRectangle(cornerRadius: 10))
+//            
+//            
+//            
+//            
+//            
 //            Text("次のうち、世界で最も速く走る動物はどれですか？")
+//                //.font(.title)
+//            //               .padding()
+//            //               .frame(maxWidth: .infinity)
+//            //               .background(Color.originalLightGreen)
+//            //               .overlay(
+//            //                RoundedRectangle(cornerRadius: 10)
+//            //                    .stroke(.originalGreen, lineWidth: 5)
+//            
+//                .font(.title)
+//                .padding()
+//                .frame(maxWidth:.infinity)
+//                .background(Color.originalLightGreen)
+//                .overlay(
+//                    RoundedRectangle(cornerRadius: 10)
+//                        .stroke(.originalGreen,lineWidth: 5)
+//                    
+//                )
 //
 //            Button("ライオン"){
 //                isShowingScoreView = true
@@ -70,6 +114,7 @@ struct QuizView: View {
 //
 //            }
 //        }
+//        .padding()
 //    }
 //}
 //
