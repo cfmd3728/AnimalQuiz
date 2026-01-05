@@ -29,22 +29,63 @@ struct QuizView: View {
                     .stroke(.originalGreen, lineWidth: 5)
                )
            
-           Button("ライオン"){
+           Button{
                isShowingScoreView = true
                
+           } label: {
+               Text("ライオン")
+                   .font(.title.bold())
+                   .padding()
+                   .frame(maxWidth: .infinity)
+                   .background(Color.originalSkin)
+                   .foregroundStyle(.originalBrown)
+                   .clipShape(RoundedRectangle(cornerRadius: 10))
            }
+           
            .fullScreenCover(isPresented: $isShowingScoreView) {
                ScoreView()
            }
-           Button("ウサイン・ボルト"){
+           Button{
+               isShowingScoreView = true
                
+           } label: {
+               Text("ウサイン・ボルト")
+                   .font(.title.bold())
+                   .padding()
+                   .frame(maxWidth: .infinity)
+                   .background(Color.originalSkin)
+                   .foregroundStyle(.originalBrown)
+                   .clipShape(RoundedRectangle(cornerRadius: 10))
            }
-           Button("チーター"){
+           Button{
+               isShowingScoreView = true
                
+           } label: {
+               Text("チーター")
+                   .font(.title.bold())
+                   .padding()
+                   .frame(maxWidth: .infinity)
+                   .background(Color.originalSkin)
+                   .foregroundStyle(.originalBrown)
+                   .clipShape(RoundedRectangle(cornerRadius: 10))
            }
-           Button("馬"){
+           
+           Button{
+               isShowingScoreView = true
                
+           } label: {
+               Text("馬")
+                   .font(.title.bold())
+                   .padding()
+                   .frame(maxWidth: .infinity)
+                   .background(Color.originalSkin)
+                   .foregroundStyle(.originalBrown)
+                   .clipShape(RoundedRectangle(cornerRadius: 10))
            }
+           
+           
+           
+         
         }
        .padding()
     }
@@ -96,23 +137,82 @@ struct QuizView: View {
 //                    
 //                )
 //
-//            Button("ライオン"){
+//           // Button{
+//                //               isShowingScoreView = true
+//                //
+//                //           } label: {
+//                //               Text("ライオン")
+//                //                   .font(.title.bold())
+//                //                   .padding()
+//                //                   .frame(maxWidth: .infinity)
+//                //                   .background(Color.originalSkin)
+//                //                   .foregroundStyle(.originalBrown)
+//                //                   .clipShape(RoundedRectangle(cornerRadius: 10))
+//                //           }
+//                //
+//            Button{
 //                isShowingScoreView = true
+//            } label: {
+//                Text("ライオン")
+//                    .font(.title.bold())
+//                    .padding()
+//                    .frame(maxWidth:.infinity)
+//                    .background(Color.originalSkin)
+//                    .foregroundStyle(.originalBrown)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
 //                
-//
+//                
 //            }
+//            Button{
+//                isShowingScoreView = true
+//            } label: {
+//                Text("ウサイン・ボルト")
+//                    .font(.title.bold())
+//                    .padding()
+//                    .frame(maxWidth:.infinity)
+//                    .background(Color.originalSkin)
+//                    .foregroundStyle(.originalBrown)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//                
+//                
+//            }
+//            Button{
+//                isShowingScoreView = true
+//            } label: {
+//                Text("チーター")
+//                    .font(.title.bold())
+//                    .padding()
+//                    .frame(maxWidth:.infinity)
+//                    .background(Color.originalSkin)
+//                    .foregroundStyle(.originalBrown)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//                
+//                
+//            }
+//            Button{
+//                isShowingScoreView = true
+//            } label: {
+//                Text("馬")
+//                    .font(.title.bold())
+//                    .padding()
+//                    .frame(maxWidth:.infinity)
+//                    .background(Color.originalSkin)
+//                    .foregroundStyle(.originalBrown)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//                
+//                
+//            }
+//                
+//            
+//            
+//            
+//            
+//            
+//            
 //            .fullScreenCover(isPresented: $isShowingScoreView) {
 //                ScoreView()
 //            }
-//            Button("ウサイン・ボルト"){
-//
-//            }
-//            Button("チーター"){
-//
-//            }
-//            Button("馬"){
-//
-//            }
+//           
 //        }
 //        .padding()
 //    }
