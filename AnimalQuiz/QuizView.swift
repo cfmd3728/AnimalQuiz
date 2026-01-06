@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizView: View {
     @State var isShowingScoreView = false
+    let choices = ["ライオン", "ウサインボルト" ,"チーター", "馬"]
     
     var body: some View {
        VStack {
@@ -28,65 +29,27 @@ struct QuizView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.originalGreen, lineWidth: 5)
                )
-           
-           Button{
-               isShowingScoreView = true
+           ForEach(choices, id: \.self) {choice in
+               Button{
+                   isShowingScoreView = true
+                   
+               } label: {
+                   Text(choice)
+                       .font(.title.bold())
+                       .padding()
+                       .frame(maxWidth: .infinity)
+                       .background(Color.originalSkin)
+                       .foregroundStyle(.originalBrown)
+                       .clipShape(RoundedRectangle(cornerRadius: 10))
+               }
                
-           } label: {
-               Text("ライオン")
-                   .font(.title.bold())
-                   .padding()
-                   .frame(maxWidth: .infinity)
-                   .background(Color.originalSkin)
-                   .foregroundStyle(.originalBrown)
-                   .clipShape(RoundedRectangle(cornerRadius: 10))
-           }
-           
-           .fullScreenCover(isPresented: $isShowingScoreView) {
-               ScoreView()
-           }
-           Button{
-               isShowingScoreView = true
-               
-           } label: {
-               Text("ウサイン・ボルト")
-                   .font(.title.bold())
-                   .padding()
-                   .frame(maxWidth: .infinity)
-                   .background(Color.originalSkin)
-                   .foregroundStyle(.originalBrown)
-                   .clipShape(RoundedRectangle(cornerRadius: 10))
-           }
-           Button{
-               isShowingScoreView = true
-               
-           } label: {
-               Text("チーター")
-                   .font(.title.bold())
-                   .padding()
-                   .frame(maxWidth: .infinity)
-                   .background(Color.originalSkin)
-                   .foregroundStyle(.originalBrown)
-                   .clipShape(RoundedRectangle(cornerRadius: 10))
-           }
-           
-           Button{
-               isShowingScoreView = true
-               
-           } label: {
-               Text("馬")
-                   .font(.title.bold())
-                   .padding()
-                   .frame(maxWidth: .infinity)
-                   .background(Color.originalSkin)
-                   .foregroundStyle(.originalBrown)
-                   .clipShape(RoundedRectangle(cornerRadius: 10))
+               .fullScreenCover(isPresented: $isShowingScoreView) {
+                   ScoreView()
+               }
            }
            
            
-           
-         
-        }
+           }
        .padding()
     }
       
@@ -103,6 +66,7 @@ struct QuizView: View {
 //
 //struct QuizView:View {
 //    @State var isShowingScoreView = false
+//    let choices = ["ライオン", "ウサイン・ボルト", "チーター", "馬"]
 //    
 //    var body: some View {
 //        VStack{
@@ -119,13 +83,6 @@ struct QuizView: View {
 //            
 //            
 //            Text("次のうち、世界で最も速く走る動物はどれですか？")
-//                //.font(.title)
-//            //               .padding()
-//            //               .frame(maxWidth: .infinity)
-//            //               .background(Color.originalLightGreen)
-//            //               .overlay(
-//            //                RoundedRectangle(cornerRadius: 10)
-//            //                    .stroke(.originalGreen, lineWidth: 5)
 //            
 //                .font(.title)
 //                .padding()
@@ -136,83 +93,26 @@ struct QuizView: View {
 //                        .stroke(.originalGreen,lineWidth: 5)
 //                    
 //                )
-//
-//           // Button{
-//                //               isShowingScoreView = true
-//                //
-//                //           } label: {
-//                //               Text("ライオン")
-//                //                   .font(.title.bold())
-//                //                   .padding()
-//                //                   .frame(maxWidth: .infinity)
-//                //                   .background(Color.originalSkin)
-//                //                   .foregroundStyle(.originalBrown)
-//                //                   .clipShape(RoundedRectangle(cornerRadius: 10))
-//                //           }
-//                //
-//            Button{
-//                isShowingScoreView = true
-//            } label: {
-//                Text("ライオン")
-//                    .font(.title.bold())
-//                    .padding()
-//                    .frame(maxWidth:.infinity)
-//                    .background(Color.originalSkin)
-//                    .foregroundStyle(.originalBrown)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//            
+//            
+//            ForEach(choices,id: \.self){choice in
 //                
+//                Button{
+//                    isShowingScoreView = true
+//                } label: {
+//                    Text(choice)
+//                        .font(.title.bold())
+//                        .padding()
+//                        .frame(maxWidth:.infinity)
+//                        .background(Color.originalSkin)
+//                        .foregroundStyle(.originalBrown)
+//                        .clipShape(RoundedRectangle(cornerRadius: 10))
+//                    
+//                    }
 //                
 //            }
-//            Button{
-//                isShowingScoreView = true
-//            } label: {
-//                Text("ウサイン・ボルト")
-//                    .font(.title.bold())
-//                    .padding()
-//                    .frame(maxWidth:.infinity)
-//                    .background(Color.originalSkin)
-//                    .foregroundStyle(.originalBrown)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                
-//                
-//            }
-//            Button{
-//                isShowingScoreView = true
-//            } label: {
-//                Text("チーター")
-//                    .font(.title.bold())
-//                    .padding()
-//                    .frame(maxWidth:.infinity)
-//                    .background(Color.originalSkin)
-//                    .foregroundStyle(.originalBrown)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                
-//                
-//            }
-//            Button{
-//                isShowingScoreView = true
-//            } label: {
-//                Text("馬")
-//                    .font(.title.bold())
-//                    .padding()
-//                    .frame(maxWidth:.infinity)
-//                    .background(Color.originalSkin)
-//                    .foregroundStyle(.originalBrown)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                
-//                
-//            }
-//                
 //            
 //            
-//            
-//            
-//            
-//            
-//            .fullScreenCover(isPresented: $isShowingScoreView) {
-//                ScoreView()
-//            }
-//           
 //        }
 //        .padding()
 //    }
