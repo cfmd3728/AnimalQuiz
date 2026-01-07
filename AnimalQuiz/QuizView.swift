@@ -19,6 +19,7 @@ struct QuizView: View {
                .background(Color.originalGreen)
                .foregroundStyle(.white)
                .clipShape(RoundedRectangle(cornerRadius: 10))
+           
 
             Text("次のうち、世界で最も速く走る動物はどれですか？")
                .font(.title)
@@ -29,6 +30,9 @@ struct QuizView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.originalGreen, lineWidth: 5)
                )
+               .frame(maxHeight:.infinity)
+           
+           
            ForEach(choices, id: \.self) {choice in
                Button{
                    isShowingScoreView = true
@@ -51,6 +55,7 @@ struct QuizView: View {
            
            }
        .padding()
+       .backgroundImage()
     }
       
         
@@ -93,6 +98,7 @@ struct QuizView: View {
 //                        .stroke(.originalGreen,lineWidth: 5)
 //                    
 //                )
+//                .frame(maxHeight:.infinity)
 //            
 //            
 //            ForEach(choices,id: \.self){choice in
@@ -115,6 +121,7 @@ struct QuizView: View {
 //            
 //        }
 //        .padding()
+//        .backgroundImage()
 //    }
 //}
 //
