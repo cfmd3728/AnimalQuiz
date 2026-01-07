@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+struct QuizItem{
+    let questuon:String
+    var choices:[String]
+    let correctAnswer:String
+
+}
+
 struct QuizView: View {
     @State var isShowingScoreView = false
     let choices = ["ライオン", "ウサインボルト" ,"チーター", "馬"]
@@ -68,6 +75,14 @@ struct QuizView: View {
 
 
 //import SwiftUI
+//
+//struct QuizItem{
+//
+//    let question:String
+//    var choices:[String]
+//    let correctAnswer:String
+//    
+//}
 //
 //struct QuizView:View {
 //    @State var isShowingScoreView = false
