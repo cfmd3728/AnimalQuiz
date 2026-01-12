@@ -17,6 +17,7 @@ struct QuizItem{
 struct QuizView: View {
     @State var isShowingScoreView = false
     @State var isShowingResultSymbol = false
+    @State var isAnswerCorrect = false
     let choices = ["ライオン", "ウサインボルト" ,"チーター", "馬"]
 //    let quizItem = QuizItem(
 //        questuon: "次のうち、世界で最も速く走る動物はどれですか？",
@@ -81,8 +82,10 @@ struct QuizView: View {
                        
                        if choice == quizeItems[1].correctAnswer{
                            print("正解です。")
+                           isAnswerCorrect = true
                        } else{
                            print("不正解です。")
+                           isAnswerCorrect = false
                        }
                        isShowingResultSymbol = true
                        
@@ -109,15 +112,17 @@ struct QuizView: View {
            .padding()
            
            if isShowingResultSymbol {
-               
-               Text("⚪︎")
+               Text(isAnswerCorrect ? "⚪︎" : "×")
                    .font(.system(size: 1000))
                    .minimumScaleFactor(0.1)
                    .foregroundStyle(.red)
                    .lineLimit(1)
                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                    .background(Color.black.opacity(0.5))
-               }
+              
+                   }
+               
+               
            
        }
        .backgroundImage()
@@ -145,6 +150,7 @@ struct QuizView: View {
 //struct QuizView:View {
 //    @State var isShowingScoreView = false
 //    @State var isShowingResultSymbol=false
+//    @State var isAnswerCorrect=false
 //    let choices = ["ライオン", "ウサイン・ボルト", "チーター", "馬"]
 //    
 //    let quizeItems = [
@@ -212,8 +218,10 @@ struct QuizView: View {
 //                        print("正解は\(quizeItems[1].correctAnswer)です。")
 //                        if choice == quizeItems[1].correctAnswer{
 //                            print("正解です。")
+//                            isAnswerCorrect = true
 //                        }else{
 //                            print("不正解です。")
+//                            isAnswerCorrect = false
 //                            
 //                        }
 //                    
@@ -249,8 +257,8 @@ struct QuizView: View {
 //            
 //          
 //            
-//            if isShowingResultSymbol{
-//                Text("⚪︎")
+//            if  isShowingResultSymbol{
+//                Text(isAnswerCorrect ? "⚪︎" : "×")
 //                    .font(.system(size: 1000))
 //                    .minimumScaleFactor(0.1)
 //                    .foregroundStyle(.red)
