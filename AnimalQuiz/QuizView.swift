@@ -47,6 +47,7 @@ struct QuizView: View {
                     question: "次のうち、最も長い首を持つ動物はどれですか？",
                     choices: ["キリン", "アルパカ" ,"ゾウ", "ウマ"],
                     correctAnswer: "キリン"
+
                 ),
         
             ]
@@ -56,7 +57,7 @@ struct QuizView: View {
     var body: some View {
        ZStack {
            VStack {
-                Text("問題番号: 1/5")
+               Text("問題番号:\(currentQuestionIndex+1)/\(quizeItems.count)")
                    .font(.headline)
                    .padding(10)
                    .background(Color.originalGreen)
@@ -179,6 +180,10 @@ struct QuizView: View {
 //            question: "次のうち、最も長い首を持つ動物はどれですか？",
 //            choices: ["キリン", "アルパカ" ,"ゾウ", "ウマ"],
 //            correctAnswer: "キリン"
+//        ), QuizItem(
+//            question: "次のうち、最も長い首を持つ動物はどれですか？",
+//            choices: ["キリン", "アルパカ" ,"ゾウ", "ウマ"],
+//            correctAnswer: "キリン"
 //        ),
 //        
 //    ]
@@ -186,7 +191,7 @@ struct QuizView: View {
 //    var body: some View {
 //        ZStack{
 //            VStack{
-//                Text("問題番号: 1/5")
+//                Text("問題番号:\(currentQuestionIndex)/\(quizeItems.count)")
 //                
 //                    .font(.headline)
 //                    .padding(10)
