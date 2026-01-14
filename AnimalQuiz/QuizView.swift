@@ -18,7 +18,9 @@ struct QuizView: View {
     @State var isShowingScoreView = false
     @State var isShowingResultSymbol = false
     @State var isAnswerCorrect = false
-    let choices = ["ライオン", "ウサインボルト" ,"チーター", "馬"]
+    @State var currentQuestionIndex = 0
+    
+   // let choices = ["ライオン", "ウサインボルト" ,"チーター", "馬"]
 //    let quizItem = QuizItem(
 //        questuon: "次のうち、世界で最も速く走る動物はどれですか？",
 //        choices: ["ライオン", "ウサインボルト" ,"チーター", "馬"],
@@ -62,7 +64,7 @@ struct QuizView: View {
                    .clipShape(RoundedRectangle(cornerRadius: 10))
                
 
-               Text(quizeItems[1].question)
+               Text(quizeItems[currentQuestionIndex].question)
                    .font(.title)
                    .padding()
                    .frame(maxWidth: .infinity)
@@ -74,13 +76,13 @@ struct QuizView: View {
                    .frame(maxHeight:.infinity)
                
                
-               ForEach(quizeItems[1].choices, id: \.self) {choice in
+               ForEach(quizeItems[currentQuestionIndex].choices, id: \.self) {choice in
                    Button{
                        //isShowingScoreView = true
                        print("\(choice)を選択しました。")
-                       print("正解は\(quizeItems[1].correctAnswer)です。")
+                       print("正解は\(quizeItems[currentQuestionIndex].correctAnswer)です。")
                        
-                       if choice == quizeItems[1].correctAnswer{
+                       if choice == quizeItems[currentQuestionIndex].correctAnswer{
                            print("正解です。")
                            isAnswerCorrect = true
                        } else{
@@ -91,6 +93,8 @@ struct QuizView: View {
                        
                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                            isShowingResultSymbol = false
+                           currentQuestionIndex += 1
+                           
                        }
                    } label: {
                        Text(choice)
@@ -151,6 +155,7 @@ struct QuizView: View {
 //    @State var isShowingScoreView = false
 //    @State var isShowingResultSymbol=false
 //    @State var isAnswerCorrect=false
+//    @State var currentQuestionIndex = 0
 //    let choices = ["ライオン", "ウサイン・ボルト", "チーター", "馬"]
 //    
 //    let quizeItems = [
@@ -193,7 +198,7 @@ struct QuizView: View {
 //                
 //                
 //                
-//                Text(quizeItems[1].question)
+//                Text(quizeItems[currentQuestionIndex].question)
 //                
 //                    .font(.title)
 //                    .padding()
@@ -207,7 +212,7 @@ struct QuizView: View {
 //                    .frame(maxHeight:.infinity)
 //                
 //                
-//                ForEach(quizeItems[1].choices,id: \.self){choice in
+//                ForEach(quizeItems[currentQuestionIndex].choices,id: \.self){choice in
 //                    
 //                    
 //                    
@@ -215,8 +220,8 @@ struct QuizView: View {
 //                        //isShowingScoreView = true
 //                        
 //                        print("\(choice)を選択しました。")
-//                        print("正解は\(quizeItems[1].correctAnswer)です。")
-//                        if choice == quizeItems[1].correctAnswer{
+//                        print("正解は\(quizeItems[currentQuestionIndex].correctAnswer)です。")
+//                        if choice == quizeItems[currentQuestionIndex].correctAnswer{
 //                            print("正解です。")
 //                            isAnswerCorrect = true
 //                        }else{
@@ -229,6 +234,7 @@ struct QuizView: View {
 //                      
 //                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //                            isShowingResultSymbol = false
+//                        currentQuestionIndex += 1
 //                        }
 //                        
 //                }label: {
