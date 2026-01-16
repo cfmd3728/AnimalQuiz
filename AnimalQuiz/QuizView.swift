@@ -94,10 +94,15 @@ struct QuizView: View {
                        
                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                            isShowingResultSymbol = false
+                           if currentQuestionIndex+1 >= quizeItems.count {
+                               isShowingScoreView = true
+                               return
+                               
+                           }
                            currentQuestionIndex += 1
+                           }
                            
-                       }
-                   } label: {
+                       } label: {
                        Text(choice)
                            .font(.title.bold())
                            .padding()
@@ -180,10 +185,6 @@ struct QuizView: View {
 //            question: "次のうち、最も長い首を持つ動物はどれですか？",
 //            choices: ["キリン", "アルパカ" ,"ゾウ", "ウマ"],
 //            correctAnswer: "キリン"
-//        ), QuizItem(
-//            question: "次のうち、最も長い首を持つ動物はどれですか？",
-//            choices: ["キリン", "アルパカ" ,"ゾウ", "ウマ"],
-//            correctAnswer: "キリン"
 //        ),
 //        
 //    ]
@@ -191,8 +192,8 @@ struct QuizView: View {
 //    var body: some View {
 //        ZStack{
 //            VStack{
-//                Text("問題番号:\(currentQuestionIndex)/\(quizeItems.count)")
-//                
+//                Text("問題番号:\(currentQuestionIndex+1)/\(quizeItems.count)")
+//
 //                    .font(.headline)
 //                    .padding(10)
 //                    .background(Color.originalGreen)
@@ -239,8 +240,14 @@ struct QuizView: View {
 //                      
 //                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //                            isShowingResultSymbol = false
+//                        if currentQuestionIndex+1 >= quizeItems.count{
+//                            isShowingScoreView = true
+//                            return
+//                        }
 //                        currentQuestionIndex += 1
 //                        }
+//                        
+//                        
 //                        
 //                }label: {
 //                        Text(choice)
