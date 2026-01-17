@@ -10,11 +10,26 @@ import SwiftUI
 struct ScoreView: View {
     var body: some View {
         VStack{
+            Spacer()
             Text("5問中３問正解！")
-            Button("トップへ"){
-
+                .font(.system(size: 40).bold())
+                .foregroundStyle(.originalYellow)
+                .stroke(color: .originalGreen, width: 5)
+            Spacer()
+                //.frame(maxHeight: .infinity)
+            Button{
+            } label: {
+                Image(.topButton)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                
             }
+            
         }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .backgroundImage()
     }
 }
 
@@ -22,17 +37,37 @@ struct ScoreView: View {
     ScoreView()
 }
 
+
+
+
 //import SwiftUI
 //
 //struct ScoreView:View{
 //    var body:some View{
+//        
 //        VStack{
+//            Spacer()
 //            Text("５問中３問正解！")
+//                .font(.system(size: 40).bold())
+//                .foregroundStyle(.originalYellow)
+//                .stroke(color: .originalGreen, width: 5)
+//            Spacer()
 //            
-//            Button("トップへ"){
+//            
+//            Button{
+//            } label: {
+//                Image(.topButton)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(maxWidth: .infinity)
 //                
 //            }
+//            
 //        }
+//        .padding()
+//        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .backgroundImage()
+//       
 //    }
 //}
 //
