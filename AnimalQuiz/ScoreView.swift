@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ScoreView: View {
+    let scoreText:String
+    
+    
     var body: some View {
         VStack{
             Spacer()
-            Text("5問中３問正解！")
+            Text(scoreText)
                 .font(.system(size: 40).bold())
                 .foregroundStyle(.originalYellow)
                 .stroke(color: .originalGreen, width: 5)
@@ -34,7 +37,7 @@ struct ScoreView: View {
 }
 
 #Preview {
-    ScoreView()
+    ScoreView(scoreText: "")
 }
 
 
@@ -43,11 +46,12 @@ struct ScoreView: View {
 //import SwiftUI
 //
 //struct ScoreView:View{
+//    let scoreText:String
 //    var body:some View{
 //        
 //        VStack{
 //            Spacer()
-//            Text("５問中３問正解！")
+//            Text(scoreText)
 //                .font(.system(size: 40).bold())
 //                .foregroundStyle(.originalYellow)
 //                .stroke(color: .originalGreen, width: 5)
@@ -72,7 +76,7 @@ struct ScoreView: View {
 //}
 //
 //#Preview {
-//        ScoreView()
+//        ScoreView(scoreText: "")
 //    }
 
 

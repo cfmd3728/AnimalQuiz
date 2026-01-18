@@ -19,6 +19,7 @@ struct QuizView: View {
     @State var isShowingResultSymbol = false
     @State var isAnswerCorrect = false
     @State var currentQuestionIndex = 0
+    @State var correctCount = 0
     
    // let choices = ["ライオン", "ウサインボルト" ,"チーター", "馬"]
 //    let quizItem = QuizItem(
@@ -86,6 +87,7 @@ struct QuizView: View {
                        if choice == quizeItems[currentQuestionIndex].correctAnswer{
                            print("正解です。")
                            isAnswerCorrect = true
+                           correctCount+=1
                        } else{
                            print("不正解です。")
                            isAnswerCorrect = false
@@ -113,7 +115,7 @@ struct QuizView: View {
                    }
                    
                    .fullScreenCover(isPresented: $isShowingScoreView) {
-                       ScoreView()
+                     ScoreView(scoreText:"\(quizeItems.count)問中\(correctCount)問正解！")
                    }
                }
                
@@ -162,6 +164,7 @@ struct QuizView: View {
 //    @State var isShowingResultSymbol=false
 //    @State var isAnswerCorrect=false
 //    @State var currentQuestionIndex = 0
+//    @State var  correctCount = 0
 //    let choices = ["ライオン", "ウサイン・ボルト", "チーター", "馬"]
 //    
 //    let quizeItems = [
@@ -230,6 +233,7 @@ struct QuizView: View {
 //                        if choice == quizeItems[currentQuestionIndex].correctAnswer{
 //                            print("正解です。")
 //                            isAnswerCorrect = true
+//                            correctCount+=1
 //                        }else{
 //                            print("不正解です。")
 //                            isAnswerCorrect = false
@@ -261,7 +265,8 @@ struct QuizView: View {
 //                    }
 //                    
 //                    .fullScreenCover(isPresented:$isShowingScoreView){
-//                        ScoreView()
+//
+//                  ScoreView(scoreText: "\(quizeItems.count)問中\(correctCount)問正解！")
 //                    }
 //                    
 //                    
