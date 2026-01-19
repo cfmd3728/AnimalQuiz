@@ -21,6 +21,10 @@ struct ScoreView: View {
             Spacer()
                 //.frame(maxHeight: .infinity)
             Button{
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                windowScene?.windows.first?.rootViewController?.dismiss(animated: true)
+                
+                
             } label: {
                 Image(.topButton)
                     .resizable()
@@ -59,6 +63,9 @@ struct ScoreView: View {
 //            
 //            
 //            Button{
+//               let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+//                windowScene?.windows.first?.rootViewController?.dismiss(animated:true)
+//                                                                            
 //            } label: {
 //                Image(.topButton)
 //                    .resizable()
@@ -78,5 +85,5 @@ struct ScoreView: View {
 //#Preview {
 //        ScoreView(scoreText: "")
 //    }
-
+//
 
