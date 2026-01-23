@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartView: View {
-    @State var isShowingQuizView = false
+    @State var isShowingGenreSelectionView = false
     
     
     var body: some View {
@@ -21,7 +21,7 @@ struct StartView: View {
             Spacer()
             
             Button {
-                isShowingQuizView = true
+                isShowingGenreSelectionView = true
                 
             } label: {
                 Image(.startButton)
@@ -29,8 +29,10 @@ struct StartView: View {
                     .scaledToFit()
                     .frame(maxWidth: .infinity)
             }
-            .fullScreenCover(isPresented:$isShowingQuizView) {
-                QuizView()
+            .fullScreenCover(isPresented:$isShowingGenreSelectionView) {
+                //QuizView()
+                GenreSelectionView()
+                
             }
             
         }
@@ -54,7 +56,7 @@ struct StartView: View {
 //
 //
 //struct StartView:View{
-//    @State var isShowingQuizView = false
+//    @State var isGenreSelectionView = false
 //    
 //    var body:some View{
 //       
@@ -68,7 +70,7 @@ struct StartView: View {
 //            Spacer()
 //            
 //            Button{
-//                isShowingQuizView = true
+//                isGenreSelectionView = true
 //                
 //            } label: {
 //                Image(.startButton)
@@ -78,8 +80,9 @@ struct StartView: View {
 //                
 //            }
 //            
-//        .fullScreenCover(isPresented: $isShowingQuizView) {
-//            QuizView()
+//        .fullScreenCover(isPresented: $isGenreSelectionView) {
+//           // QuizView()
+//            GenreSelectionView()
 //        }
 //    }
 //        .padding()

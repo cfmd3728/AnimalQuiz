@@ -1,3 +1,11 @@
+//
+//  File.swift
+//  AnimalQuiz
+//
+//  Created by 菊池和広 on 2026/01/21.
+//
+
+
 let quizeItems = [
         QuizItem(
             question: "次のうち、世界で最も速く走る動物はどれですか？",
