@@ -2,15 +2,17 @@
 //  GenreSelectionView.swift
 //  AnimalQuiz
 //
-//  Created by 菊池和広 on 2026/01/22.
+//  Created by Tora77 on 2026/01/22.
 //
 
 import SwiftUI
 
 struct GenreSelectionView: View {
+    @State var isShowingQuizView = false
     var body: some View {
         VStack {
             Button {
+                isShowingQuizView = true
 
             } label: {
                 Text("動物知識クイズ")
@@ -22,6 +24,7 @@ struct GenreSelectionView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             Button {
+                isShowingQuizView = true
 
             } label: {
                 Text("動物シルエットクイズ")
@@ -33,6 +36,7 @@ struct GenreSelectionView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             Button {
+                isShowingQuizView = true
 
             } label: {
                 Text("部分画像クイズ")
@@ -47,6 +51,9 @@ struct GenreSelectionView: View {
         }
         .padding()
         .backgroundImage()
+        .fullScreenCover(isPresented: $isShowingQuizView) {
+            QuizView()
+        }
     }
 
 }
@@ -66,10 +73,12 @@ struct GenreSelectionView: View {
 //import SwiftUI
 //
 //struct GenreSelectionView: View {
+//    @State var isShowingQuizView = false
 //    
 //    var body: some View {
 //        VStack{
 //            Button{
+//                isShowingQuizView = true
 //                
 //                
 //            } label: {
@@ -82,6 +91,7 @@ struct GenreSelectionView: View {
 //                    .clipShape(RoundedRectangle(cornerRadius: 10))
 //            }
 //            Button{
+//                isShowingQuizView = true
 //                
 //                
 //            } label: {
@@ -95,6 +105,7 @@ struct GenreSelectionView: View {
 //            }
 //            
 //            Button{
+//                isShowingQuizView = true
 //                
 //                
 //            } label: {
@@ -113,6 +124,9 @@ struct GenreSelectionView: View {
 //        }
 //        .padding()
 //        .backgroundImage()
+//        .fullScreenCover(isPresented: $isShowingQuizView) {
+//            QuizView()
+//        }
 //        
 //        
 //    }

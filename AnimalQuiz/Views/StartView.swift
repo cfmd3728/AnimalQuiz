@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     @State var isShowingGenreSelectionView = false
-    
+   
     
     var body: some View {
         VStack {
