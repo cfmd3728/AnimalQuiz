@@ -37,7 +37,9 @@ struct QuizView: View {
                     }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.originalLightGreen)
+                .background(
+                    Color.originalLightGreen)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.originalGreen, lineWidth: 5)
@@ -133,7 +135,9 @@ struct QuizView: View {
 //                    }
 //                    .padding()
 //                    .frame(maxWidth: .infinity)
-//                    .background(Color.originalLightGreen)
+//                    .background(
+//                        Color.originalLightGreen)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
 //                    .overlay(
 //                        RoundedRectangle(cornerRadius: 10)
 //                            .stroke(.originalGreen, lineWidth: 5)
