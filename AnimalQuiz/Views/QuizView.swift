@@ -5,257 +5,187 @@
 //  Created by Tora77 on 2025/12/28.
 //
 
+
 import SwiftUI
-
-struct QuizItem{
-    let question:String
-    var choices:[String]
-    let correctAnswer:String
-    
-    
-}
-
 struct QuizView: View {
     @State var isShowingScoreView = false
     @State var isShowingResultSymbol = false
     @State var isAnswerCorrect = false
     @State var currentQuestionIndex = 0
     @State var correctCount = 0
-    
-    let quizeItems = QuizData.quizeItems
-    
-    // let choices = ["ライオン", "ウサインボルト" ,"チーター", "馬"]
-    //    let quizItem = QuizItem(
-    //        questuon: "次のうち、世界で最も速く走る動物はどれですか？",
-    //        choices: ["ライオン", "ウサインボルト" ,"チーター", "馬"],
-    //        correctAnswer: "チーター"
-    //    )
-   
+   // let quizItems = QuizData.quizItems
+    @Binding var quizItems: [QuizItem]
     
     
     var body: some View {
         ZStack {
             VStack {
-                Text("問題番号:\(currentQuestionIndex+1)/\(quizeItems.count)")
+                Text("問題番号: \(currentQuestionIndex+1)/\(quizItems.count)")
                     .font(.headline)
                     .padding(10)
-                    .background(Color.originalGreen)
+                    .background(.originalGreen)
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-                
-                Text(quizeItems[currentQuestionIndex].question)
-                    .font(.title)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.originalLightGreen)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.originalGreen, lineWidth: 5)
-                    )
-                    .frame(maxHeight:.infinity)
-                
-                
-                ForEach(quizeItems[currentQuestionIndex].choices, id: \.self) {choice in
-                    Button{
-                        //isShowingScoreView = true
-                        //print("\(choice)を選択しました。")
-                        //print("正解は\(quizeItems[currentQuestionIndex].correctAnswer)です。")
+                VStack{
+                    Text(quizItems[currentQuestionIndex].question)
+                        .font(.title)
                         
-                        if choice == quizeItems[currentQuestionIndex].correctAnswer{
-                            // print("正解です。")
+                    quizItems[currentQuestionIndex].questionImage?
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                    }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.originalLightGreen)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.originalGreen, lineWidth: 5)
+                )
+                .frame(maxHeight: .infinity)
+                
+               
+            ForEach(quizItems[currentQuestionIndex].choices, id: \.self) { choice in
+                    Button {
+                        if choice == quizItems[currentQuestionIndex].correctAnswer {
+                            correctCount += 1
                             isAnswerCorrect = true
-                            correctCount+=1
-                        } else{
-                            // print("不正解です。")
+                        } else {
                             isAnswerCorrect = false
                         }
                         isShowingResultSymbol = true
-                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            isShowingResultSymbol = false
-                            if currentQuestionIndex+1 >= quizeItems.count {
+                            self.isShowingResultSymbol = false
+                            if currentQuestionIndex + 1 >= quizItems.count {
                                 isShowingScoreView = true
                                 return
-                                
                             }
                             currentQuestionIndex += 1
                         }
-                        
                     } label: {
                         Text(choice)
-                            .font(.title.bold())
-                            .padding()
                             .frame(maxWidth: .infinity)
+                            .padding()
+                            .font(.title.bold())
                             .background(Color.originalSkin)
                             .foregroundStyle(.originalBrown)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
-                    
                     .fullScreenCover(isPresented: $isShowingScoreView) {
-                        ScoreView(scoreText:"\(quizeItems.count)問中\(correctCount)問正解！")
+                        ScoreView(scoreText: "\(quizItems.count)問中\(correctCount)問正解！")
                     }
                 }
-                
-                
             }
             .padding()
-            
             if isShowingResultSymbol {
-                Text(isAnswerCorrect ? "⚪︎" : "×")
+                Text(isAnswerCorrect ? "○" : "✗")
                     .font(.system(size: 1000))
                     .minimumScaleFactor(0.1)
                     .foregroundStyle(isAnswerCorrect ? .green : .red)
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.black.opacity(0.5))
-                
+                    .background(.black.opacity(0.5))
             }
-            
-            
-            
         }
         .backgroundImage()
     }
-    
-    
+}
+#Preview {
+    QuizView(quizItems: .constant(QuizData.silhouetteQuestions))
 }
 
-#Preview {
-    QuizView()
-}
+
+
+
+
+
+
 
 
 
 //import SwiftUI
-//
-//struct QuizItem{
-//
-//    let question:String
-//    var choices:[String]
-//    let correctAnswer:String
-//
-//}
-//
-//struct QuizView:View {
+//struct QuizView: View {
 //    @State var isShowingScoreView = false
-//    @State var isShowingResultSymbol=false
-//    @State var isAnswerCorrect=false
+//    @State var isShowingResultSymbol = false
+//    @State var isAnswerCorrect = false
 //    @State var currentQuestionIndex = 0
-//    @State var  correctCount = 0
+//    @State var correctCount = 0
 //    
-//    let quizeItems = QuizData.quizeItems
-//   
-//    
-//    let choices = ["ライオン", "ウサイン・ボルト", "チーター", "馬"]
-//
-//    
+//    @Binding var quizItems: [QuizItem]
 //    var body: some View {
-//        ZStack{
-//            VStack{
-//                Text("問題番号:\(currentQuestionIndex+1)/\(quizeItems.count)")
-//
+//        ZStack {
+//            VStack {
+//                Text("問題番号: \(currentQuestionIndex+1)/\(quizItems.count)")
 //                    .font(.headline)
 //                    .padding(10)
-//                    .background(Color.originalGreen)
+//                    .background(.originalGreen)
 //                    .foregroundStyle(.white)
 //                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//
-//
-//
-//
-//
-//                Text(quizeItems[currentQuestionIndex].question)
-//
-//                    .font(.title)
+//                VStack{
+//                    Text(quizItems[currentQuestionIndex].question)
+//                        .font(.title)
+//                  
+//                    quizItems[currentQuestionIndex].questionImage?
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 200, height: 200)
+//                    
+//                    }
 //                    .padding()
-//                    .frame(maxWidth:.infinity)
+//                    .frame(maxWidth: .infinity)
 //                    .background(Color.originalLightGreen)
 //                    .overlay(
 //                        RoundedRectangle(cornerRadius: 10)
-//                            .stroke(.originalGreen,lineWidth: 5)
-//
+//                            .stroke(.originalGreen, lineWidth: 5)
 //                    )
-//                    .frame(maxHeight:.infinity)
+//                    .frame(maxHeight: .infinity)
 //
-//
-//                ForEach(quizeItems[currentQuestionIndex].choices,id: \.self){choice in
-//
-//
-//
+//                ForEach(quizItems[currentQuestionIndex].choices, id: \.self) { choice in
 //                    Button {
-//                        //isShowingScoreView = true
-//
-//                        print("\(choice)を選択しました。")
-//                        print("正解は\(quizeItems[currentQuestionIndex].correctAnswer)です。")
-//                        if choice == quizeItems[currentQuestionIndex].correctAnswer{
-//                            print("正解です。")
+//                        if choice == quizItems[currentQuestionIndex].correctAnswer {
+//                            correctCount += 1
 //                            isAnswerCorrect = true
-//                            correctCount+=1
-//                        }else{
-//                            print("不正解です。")
+//                        } else {
 //                            isAnswerCorrect = false
-//
 //                        }
-//
-//                    isShowingResultSymbol = true
-//
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            isShowingResultSymbol = false
-//                        if currentQuestionIndex+1 >= quizeItems.count{
-//                            isShowingScoreView = true
-//                            return
+//                        isShowingResultSymbol = true
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                            self.isShowingResultSymbol = false
+//                            if currentQuestionIndex + 1 >= quizItems.count {
+//                                isShowingScoreView = true
+//                                return
+//                            }
+//                            currentQuestionIndex += 1
 //                        }
-//                        currentQuestionIndex += 1
-//                        }
-//
-//
-//
-//                }label: {
+//                    } label: {
 //                        Text(choice)
-//                            .font(.title.bold())
+//                            .frame(maxWidth: .infinity)
 //                            .padding()
-//                            .frame(maxWidth:.infinity)
+//                            .font(.title.bold())
 //                            .background(Color.originalSkin)
 //                            .foregroundStyle(.originalBrown)
 //                            .clipShape(RoundedRectangle(cornerRadius: 10))
-//
 //                    }
-//
-//                    .fullScreenCover(isPresented:$isShowingScoreView){
-//
-//                  ScoreView(scoreText: "\(quizeItems.count)問中\(correctCount)問正解！")
+//                    .fullScreenCover(isPresented: $isShowingScoreView) {
+//                        ScoreView(scoreText: "\(quizItems.count)問中\(correctCount)問正解！")
 //                    }
-//
-//
 //                }
-//
-//
 //            }
-//
-//
 //            .padding()
-//
-//
-//
-//            if  isShowingResultSymbol{
-//                Text(isAnswerCorrect ? "⚪︎" : "×")
+//            if isShowingResultSymbol {
+//                Text(isAnswerCorrect ? "○" : "✗")
 //                    .font(.system(size: 1000))
 //                    .minimumScaleFactor(0.1)
 //                    .foregroundStyle(isAnswerCorrect ? .green : .red)
 //                    .lineLimit(1)
 //                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                    .background(Color.black.opacity(0.5))
-//
-//                }
-//
+//                    .background(.black.opacity(0.5))
+//            }
 //        }
-//
 //        .backgroundImage()
 //    }
 //}
-//
-//    #Preview {
-//            QuizView()
-//        }
-
+//#Preview {
+//    
+//    QuizView(quizItems: .constant(QuizData.silhouetteQuestions))
+//}
